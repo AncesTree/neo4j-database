@@ -1,0 +1,14 @@
+deploy:
+  provider: script
+  script: bash ./deploy.sh
+  on: master
+before_install:
+- openssl aes-256-cbc -K $encrypted_d1eb41439921_key -iv $encrypted_d1eb41439921_iv
+  -in deploy.key.enc -out deploy.key -d
+- chmod +x ./deploy.sh
+- eval "$(ssh-agent -s)"
+- chmod 600 .travis/deploy.key
+- ssh-add .travis/deploy.key
+- ssh-keyscan igpolytech.fr >> ~/.ssh/known_hosts
+- git remote add deploy dokku@igpolytech.fr:ancestree-neo4j-database
+- git config --global push.default simple

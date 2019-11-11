@@ -1,0 +1,4 @@
+# Credentials
+.travis/*.key
+.travis/*.key.pub
+.idea
