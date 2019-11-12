@@ -12,5 +12,5 @@ before_install:
 - chmod 600 .travis/deploy.key
 - ssh-add .travis/deploy.key
 - ssh-keyscan igpolytech.fr >> ~/.ssh/known_hosts
-- git remote add deploy dokku@igpolytech.fr:ancestree-neo4j-database
+- git remote add deploy dokku@igpolytech.fr:ancestree-neo4j
 - git config --global push.default simple
